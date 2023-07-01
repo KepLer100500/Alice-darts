@@ -1,3 +1,6 @@
+application.properties
+keystore.p12
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
