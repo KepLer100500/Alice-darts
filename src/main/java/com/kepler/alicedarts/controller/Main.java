@@ -1,5 +1,6 @@
 package com.kepler.alicedarts.controller;
 
+import com.kepler.alicedarts.service.PointsCalculator;
 import com.kepler.alicedarts.model.exchange.request.InputData;
 import com.kepler.alicedarts.model.exchange.response.OutputData;
 import com.kepler.alicedarts.model.exchange.response.Response;
@@ -21,8 +22,8 @@ public class Main {
         outputData.setSession(inputData.getSession());
         response.setEnd_session(false);
 
-        response.setText(inputData.getRequest().getOriginal_utterance());
-        log.info(inputData.getRequest().getOriginal_utterance());
+        log.info(inputData.getRequest().getOriginal_utterance()); // logging text request to dialog with alice
+        response.setText(String.valueOf(PointsCalculator.calculate(inputData.getRequest().getNlu()))); // send to user sum input points
 
         outputData.setResponse(response);
         return outputData;
