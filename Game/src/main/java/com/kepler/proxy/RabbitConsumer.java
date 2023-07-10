@@ -21,7 +21,11 @@ public class RabbitConsumer {
     
     @Autowired
     PointsCalculator pointsCalculator;
-    
+
+    /**
+     * Get words from RabbitMQ queue, calculate sum of points and send result
+     * @param tokens
+     */
     @RabbitListener(queues = "${rabbitmq.queue.game}", messageConverter = "jsonMessageConverter")
     public void processQueue(Tokens tokens) {
         ResultCalculations result = ResultCalculations.builder()
