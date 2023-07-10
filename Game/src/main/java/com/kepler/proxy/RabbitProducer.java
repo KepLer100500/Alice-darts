@@ -22,6 +22,10 @@ public class RabbitProducer {
     @Autowired
     MessageConverter jsonMessageConverter;
 
+    /**
+     * Send to RabbitMQ queue sum of points
+     * @param result
+     */
     public void sendMessage(ResultCalculations result) {
         rabbitTemplate.setMessageConverter(jsonMessageConverter);
         rabbitTemplate.convertAndSend(

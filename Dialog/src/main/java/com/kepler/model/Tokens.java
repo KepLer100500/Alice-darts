@@ -1,4 +1,4 @@
-package com.kepler.model.rabbitExchange;
+package com.kepler.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultCalculations {
-    private Integer resultCalculations;
+@Builder
+public class Tokens {
+    private String[] tokens;
 }

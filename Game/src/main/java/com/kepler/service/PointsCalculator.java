@@ -11,10 +11,12 @@ import java.util.ListIterator;
 @Log
 @Service
 public class PointsCalculator {
+    /**
+     * Get previous, current, next values relatively current word
+     * @param wordsIterator
+     * @return values
+     */
     public HashMap<String, String> getPreviousCurrentNextValues(ListIterator<String> wordsIterator) {
-        /*
-        Get previous, current, next values relatively current word
-         */
         HashMap<String, String> values = new HashMap<>();
         String curWord;
         String prevWord;
@@ -38,10 +40,12 @@ public class PointsCalculator {
         return values;
     }
 
+    /**
+     * Check, player hit bull or half-bull
+     * @param word
+     * @return
+     */
     private int bullOrHalfBull(String word) {
-        /*
-        Check, player hit bull or half-bull
-         */
         if(word.equals("полубуль")) {
             return 25;
         }
