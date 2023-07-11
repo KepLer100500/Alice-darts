@@ -1,17 +1,16 @@
 package com.kepler.proxy;
 
 import com.kepler.model.Tokens;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import java.util.logging.Level;
 
 
 @Service
-@Log
+@Slf4j
 public class RabbitProducer {
     @Value("${rabbitmq.exchange}")
     private String exchange;
@@ -30,7 +29,7 @@ public class RabbitProducer {
      * @param tokens
      */
     public void sendMessage(Tokens tokens) {
-        log.log(Level.INFO, "Sending message: {0}", tokens);
+        log.info("Sending message: {}", tokens);
 
         rabbitTemplate.setMessageConverter(jsonMessageConverter);
         rabbitTemplate.convertAndSend(

@@ -1,15 +1,15 @@
 package com.kepler;
 
 import com.kepler.service.PointsCalculator;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Test case: calculate sum player points")
-@Log
+@Slf4j
 @SpringBootTest
 public class PointsCalculatorTest {
     @Autowired
