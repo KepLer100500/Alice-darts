@@ -20,3 +20,22 @@ rabbitmq.queue.dialog=
 rabbitmq.routingKey.dialog=
 rabbitmq.queue.game=
 rabbitmq.routingKey.game=
+
+# log level
+logging.level.root=INFO
+# how named log file
+logging.file.name=logs/app.log
+# pattern to log oversize
+logging.logback.rollingpolicy.file-name-pattern=logs/%d{dd-MM-yyyy}/app-%d{dd-MM-yyyy}-%i.log
+# size one file before rotate
+logging.logback.rollingpolicy.max-file-size=100KB
+# how many days by rotate logs
+logging.logback.rollingpolicy.max-history=30
+# total size of backup log
+logging.logback.rollingpolicy.total-size-cap=10MB
+# auto-clear on start
+logging.logback.rollingpolicy.clean-history-on-start=true
+# how write logs to console
+logging.pattern.console=%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+# how write logs to file
+logging.pattern.file=%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n

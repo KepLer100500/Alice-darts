@@ -7,14 +7,14 @@ import com.kepler.model.response.OutputData;
 import com.kepler.model.response.Response;
 import com.kepler.proxy.RabbitConsumer;
 import com.kepler.proxy.RabbitProducer;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Log
+@Slf4j
 @RestController
 @RequestMapping ("darts/api/v1/") // url for alice dialog webhook
 public class AliceDialog {
@@ -34,7 +34,7 @@ public class AliceDialog {
         OutputData outputData = buildOutputData(inputData);
         Integer summaryPoints = sendTextAndReceiveCalculatedPoints(inputData.getRequest().getNlu().getTokens());
         Response response = buildResponse(summaryPoints);
-
+        log.info("Send to dialog: {}", summaryPoints);
         outputData.setResponse(response);
         return outputData;
     }
