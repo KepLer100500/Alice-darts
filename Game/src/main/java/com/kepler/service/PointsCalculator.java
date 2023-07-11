@@ -14,9 +14,9 @@ public class PointsCalculator {
     /**
      * Get previous, current, next values relatively current word
      * @param wordsIterator
-     * @return values
+     * @return hashMap - values
      */
-    public HashMap<String, String> getPreviousCurrentNextValues(ListIterator<String> wordsIterator) {
+    private HashMap<String, String> getPreviousCurrentNextValues(ListIterator<String> wordsIterator) {
         HashMap<String, String> values = new HashMap<>();
         String curWord;
         String prevWord;
@@ -43,7 +43,7 @@ public class PointsCalculator {
     /**
      * Check, player hit bull or half-bull
      * @param word
-     * @return
+     * @return points
      */
     private int bullOrHalfBull(String word) {
         if(word.equals("полубуль")) {
@@ -55,10 +55,13 @@ public class PointsCalculator {
         return 0;
     }
 
+    /**
+     * Check, player hit sector with multiplier
+     * @param multiplier
+     * @param sector
+     * @return points
+     */
     private int multipliedSector(String multiplier, int sector) {
-        /*
-        Check, player hit sector with multiplier
-         */
         if(multiplier != null) {
             if (multiplier.equals("удвоение")) {
                 return sector * 2;
@@ -70,10 +73,13 @@ public class PointsCalculator {
         return 0;
     }
 
+    /**
+     * Check, player hit bull or half bull with multiplier
+     * @param multiplier
+     * @param sector
+     * @return points
+     */
     private int multipliedBullOrHalfBull(int multiplier, String sector) {
-        /*
-        Check, how many times' player hit bull or half-bull
-         */
         if(sector != null) {
             if (sector.equals("буля")) {
                 return multiplier * 50;
@@ -85,6 +91,12 @@ public class PointsCalculator {
         return 0;
     }
 
+    /**
+     * Calculate where hit player, multiply sector, or bull, or multiply bull
+     * @param values
+     * @param curNumber
+     * @return points
+     */
     private int getMultipliedValueIfExist(HashMap<String, String> values, int curNumber) {
         /*
         Calculate, where hit player
@@ -94,9 +106,15 @@ public class PointsCalculator {
                 multipliedBullOrHalfBull(curNumber, values.get("next"));
     }
 
+    /**
+     * Get words, calculate sum player points
+     * @param tokens
+     * @return sum all points
+     */
     public Integer process(String[] tokens) {
         int result = 0;
         List<String> words = new ArrayList<>(List.of(tokens));
+        words.removeIf(word -> word.equalsIgnoreCase("минус")); // filter negative values
         ListIterator<String> wordsIterator = words.listIterator();
         HashMap<String, String> values;
         while(wordsIterator.hasNext()) {
