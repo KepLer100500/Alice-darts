@@ -33,18 +33,18 @@ jobs:
         echo "rabbitmq.queue.game=${{ secrets.RABBITMQ_QUEUE_GAME }}" >> Dialog/src/main/resources/application.properties
         echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> Dialog/src/main/resources/application.properties
         
-        touch Game/src/main/resources/application.properties
-        echo "server.port=9093" >> Game/src/main/resources/application.properties
-        echo "spring.jackson.deserialization.fail-on-unknown-properties=false" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.hostname=${{ secrets.RABBITMQ_HOSTNAME }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.username=${{ secrets.RABBITMQ_USERNAME }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.password=${{ secrets.RABBITMQ_PASSWORD }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.virtualHost=${{ secrets.RABBITMQ_VIRTUALHOST }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.exchange=${{ secrets.RABBITMQ_EXCHANGE }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.queue.dialog=${{ secrets.RABBITMQ_QUEUE_DIALOG }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.routingKey.dialog=${{ secrets.RABBITMQ_ROUTINGKEY_DIALOG }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.queue.game=${{ secrets.RABBITMQ_QUEUE_GAME }}" >> Game/src/main/resources/application.properties
-        echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> Game/src/main/resources/application.properties
+        touch PointsCalculator/src/main/resources/application.properties
+        echo "server.port=9093" >> PointsCalculator/src/main/resources/application.properties
+        echo "spring.jackson.deserialization.fail-on-unknown-properties=false" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.hostname=${{ secrets.RABBITMQ_HOSTNAME }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.username=${{ secrets.RABBITMQ_USERNAME }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.password=${{ secrets.RABBITMQ_PASSWORD }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.virtualHost=${{ secrets.RABBITMQ_VIRTUALHOST }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.exchange=${{ secrets.RABBITMQ_EXCHANGE }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.queue.dialog=${{ secrets.RABBITMQ_QUEUE_DIALOG }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.routingKey.dialog=${{ secrets.RABBITMQ_ROUTINGKEY_DIALOG }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.queue.game=${{ secrets.RABBITMQ_QUEUE_GAME }}" >> PointsCalculator/src/main/resources/application.properties
+        echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> PointsCalculator/src/main/resources/application.properties
     - name: Run tests
       run: | 
         mvn mvn spring-boot:run -pl PointsCalculator
