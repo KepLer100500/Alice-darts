@@ -47,5 +47,5 @@ jobs:
         echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> PointsCalculator/src/main/resources/application.properties
     - name: Run tests
       run: | 
-        mvn mvn spring-boot:run -pl PointsCalculator
+        mvn spring-boot:run -pl PointsCalculator
         mvn clean test
