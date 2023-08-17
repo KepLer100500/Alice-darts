@@ -1,6 +1,6 @@
 package com.kepler.service;
 
-import com.kepler.model.User;
+import com.kepler.model.game.User;
 import com.kepler.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

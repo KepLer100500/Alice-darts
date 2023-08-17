@@ -1,6 +1,6 @@
 package com.kepler.proxy;
 
-import com.kepler.model.ResultCalculations;
+import com.kepler.model.calculator.ResultCalculations;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
