@@ -6,7 +6,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  Run-service:
+  Tests:
 
     runs-on: ubuntu-latest
 
@@ -20,6 +20,19 @@ jobs:
         cache: maven
     - name: Create application.properties for PointsCalculator service from GitHub.secrets
       run: |
+        touch Dialog/src/main/resources/application.properties
+        echo "server.port=9092" >> Dialog/src/main/resources/application.properties
+        echo "spring.jackson.deserialization.fail-on-unknown-properties=false" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.hostname=${{ secrets.RABBITMQ_HOSTNAME }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.username=${{ secrets.RABBITMQ_USERNAME }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.password=${{ secrets.RABBITMQ_PASSWORD }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.virtualHost=${{ secrets.RABBITMQ_VIRTUALHOST }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.exchange=${{ secrets.RABBITMQ_EXCHANGE }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.queue.dialog=${{ secrets.RABBITMQ_QUEUE_DIALOG }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.routingKey.dialog=${{ secrets.RABBITMQ_ROUTINGKEY_DIALOG }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.queue.game=${{ secrets.RABBITMQ_QUEUE_GAME }}" >> Dialog/src/main/resources/application.properties
+        echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> Dialog/src/main/resources/application.properties
+        
         touch PointsCalculator/src/main/resources/application.properties
         echo "server.port=9093" >> PointsCalculator/src/main/resources/application.properties
         echo "spring.jackson.deserialization.fail-on-unknown-properties=false" >> PointsCalculator/src/main/resources/application.properties
@@ -32,5 +45,5 @@ jobs:
         echo "rabbitmq.routingKey.dialog=${{ secrets.RABBITMQ_ROUTINGKEY_DIALOG }}" >> PointsCalculator/src/main/resources/application.properties
         echo "rabbitmq.queue.game=${{ secrets.RABBITMQ_QUEUE_GAME }}" >> PointsCalculator/src/main/resources/application.properties
         echo "rabbitmq.routingKey.game=${{ secrets.RABBITMQ_ROUTINGKEY_GAME }}" >> PointsCalculator/src/main/resources/application.properties
-    - name: Run service
-      run: mvn spring-boot:run -pl PointsCalculator
+    - name: Run tests
+      run: mvn clean test

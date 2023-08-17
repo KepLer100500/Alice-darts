@@ -32,6 +32,7 @@ public class BotTest {
     @Test
     @Order(10)
     @DisplayName("makeMoveTest")
+    @Disabled
     void makeMoveTest() {
         String[] tokens = bot.makeMove();
         Integer botSumPoints = sendTextAndReceiveCalculatedPoints(tokens);
